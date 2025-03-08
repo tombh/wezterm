@@ -115,6 +115,7 @@ pub struct Surface {
     cursor_visibility: CursorVisibility,
     cursor_color: ColorAttribute,
     title: String,
+    ignore_high_repaint_cost: bool,
 }
 
 #[derive(Default)]
@@ -531,12 +532,18 @@ impl Surface {
             return (self.seqno, Cow::Owned(self.repaint_all()));
         }
 
-        // Approximate cost to render the change screen
-        let delta_cost = self.seqno - seq;
-        // Approximate cost to repaint from scratch
-        let full_cost = self.estimate_full_paint_cost();
+        let mut is_repaint = false;
 
-        if delta_cost > full_cost {
+        if !self.ignore_high_repaint_cost {
+            // Approximate cost to render the change screen
+            let delta_cost = self.seqno - seq;
+            // Approximate cost to repaint from scratch
+            let full_cost = self.estimate_full_paint_cost();
+
+            is_repaint = delta_cost > full_cost
+        }
+
+        if is_repaint {
             (self.seqno, Cow::Owned(self.repaint_all()))
         } else {
             (self.seqno, Cow::Borrowed(&self.changes[seq - first..]))
@@ -823,6 +830,13 @@ impl Surface {
     ) -> SequenceNo {
         let changes = self.diff_region(dest_x, dest_y, width, height, self, src_x, src_y);
         self.add_changes(changes)
+    }
+
+    /// Normally, if rendering changes is too expensive, then a full repaint is done. However, this
+    /// involves clearing the terminal screen, which can cause flickering in some circumstances. If
+    /// you're willing to pay the potential extra cost for rendering then set this to `true`.
+    pub fn ignore_high_repaint_cost(&mut self, value: bool) {
+        self.ignore_high_repaint_cost = value;
     }
 }
 
