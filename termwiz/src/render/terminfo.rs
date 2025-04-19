@@ -74,11 +74,13 @@ impl TerminfoRenderer {
         if let Some(attr) = self.pending_attr.take() {
             let mut current_foreground = self.current_attr.foreground();
             let mut current_background = self.current_attr.background();
+            let mut current_underline_color = self.current_attr.underline_color();
 
             if !attr.attribute_bits_equal(&self.current_attr) {
                 // Updating the attribute bits also resets the colors.
                 current_foreground = ColorAttribute::Default;
                 current_background = ColorAttribute::Default;
+                current_underline_color = ColorAttribute::Default;
 
                 let sgr = if self.caps.force_terminfo_render_to_use_ansi_sgr() {
                     None
@@ -121,9 +123,8 @@ impl TerminfoRenderer {
                     }
                 }
 
-                if attr.underline() == Underline::Double {
-                    attr_on!(Sgr::Underline(Underline::Double));
-                }
+                // TODO: do we need to check the capabilities for each kind of underline?
+                attr_on!(Sgr::Underline(attr.underline()));
 
                 if attr.blink() == Blink::Rapid {
                     attr_on!(Sgr::Blink(Blink::Rapid));
@@ -151,6 +152,34 @@ impl TerminfoRenderer {
                 }
                 None => 0,
             };
+
+            if attr.underline_color() != current_underline_color
+                && self.caps.color_level() != ColorLevel::MonoChrome
+            {
+                match (has_true_color, attr.underline_color()) {
+                    (true, ColorAttribute::TrueColorWithPaletteFallback(tc, _))
+                    | (true, ColorAttribute::TrueColorWithDefaultFallback(tc)) => {
+                        attr_on!(Sgr::UnderlineColor(ColorSpec::TrueColor(tc)));
+                    }
+                    (false, ColorAttribute::TrueColorWithDefaultFallback(_))
+                    | (_, ColorAttribute::Default) => {
+                        // Terminfo doesn't define a reset color to default, so
+                        // we use the ANSI code.
+                        attr_on!(Sgr::UnderlineColor(ColorSpec::Default));
+                    }
+                    (false, ColorAttribute::TrueColorWithPaletteFallback(_, idx))
+                    | (_, ColorAttribute::PaletteIndex(idx)) => {
+                        match self.get_capability::<cap::SetAForeground>() {
+                            Some(set) if (idx as i32) < terminfo_256_color => {
+                                set.expand().color(idx).to(out.by_ref())?;
+                            }
+                            _ => {
+                                attr_on!(Sgr::UnderlineColor(ColorSpec::PaletteIndex(idx)));
+                            }
+                        }
+                    }
+                }
+            }
 
             if attr.foreground() != current_foreground
                 && self.caps.color_level() != ColorLevel::MonoChrome
