@@ -1,12 +1,12 @@
 [package]
-authors = ["Wez Furlong"]
-name = "termwiz"
-version = "0.24.0"
+authors = ["Wez Furlong", "Tom BH <tattoy@tombh.co.uk>"]
+name = "tattoy-termwiz"
+version = "0.24.0-fork"
 edition = "2018"
-repository = "https://github.com/wezterm/wezterm"
-description = "Terminal Wizardry for Unix and Windows"
+repository = "https://github.com/tattoy-org/wezterm"
+description = "Tattoy fork of Wezterm's Terminal Wizardry for Unix and Windows"
 license = "MIT"
-documentation = "https://docs.rs/termwiz"
+documentation = "https://docs.rs/tattoy-termwiz"
 keywords = ["terminal", "readline", "console", "curses"]
 readme = "README.md"
 

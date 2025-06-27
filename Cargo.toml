@@ -215,7 +215,7 @@ tar = "0.4"
 tempfile = "3.20"
 terminfo = "0.9"
 termios = "0.3"
-termwiz = { version="0.24.0", path = "termwiz" }
+termwiz = { package = "tattoy-termwiz", version = "0.23.1-fork", path = "termwiz" }
 termwiz-funcs = { path = "lua-api-crates/termwiz-funcs" }
 textwrap = "0.16"
 thiserror = "1.0"
@@ -257,7 +257,7 @@ wezterm-mux-server-impl = { path = "wezterm-mux-server-impl" }
 wezterm-open-url = { path = "wezterm-open-url" }
 wezterm-ssh = { path = "wezterm-ssh" }
 wezterm-surface = { path = "wezterm-surface" }
-wezterm-term = { path = "term" }
+wezterm-term = { path = "term", package = "tattoy-wezterm-term" }
 wezterm-toast-notification = { path = "wezterm-toast-notification" }
 wezterm-uds = { path = "wezterm-uds" }
 wezterm-version = { path = "wezterm-version" }
