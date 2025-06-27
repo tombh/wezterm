@@ -844,10 +844,10 @@ dependencies = [
  "rangeset",
  "serde",
  "smol",
- "termwiz",
+ "tattoy-termwiz",
+ "tattoy-wezterm-term",
  "thiserror 1.0.69",
  "varbincode",
- "wezterm-term",
  "zstd",
 ]
 
@@ -878,9 +878,9 @@ dependencies = [
  "serde",
  "serde_json",
  "serde_yaml",
+ "tattoy-wezterm-term",
  "wezterm-color-types",
  "wezterm-dynamic",
- "wezterm-term",
 ]
 
 [[package]]
@@ -948,7 +948,8 @@ dependencies = [
  "serde_json",
  "shlex",
  "smol",
- "termwiz",
+ "tattoy-termwiz",
+ "tattoy-wezterm-term",
  "toml 0.8.22",
  "umask",
  "wezterm-bidi",
@@ -956,7 +957,6 @@ dependencies = [
  "wezterm-dynamic",
  "wezterm-input-types",
  "wezterm-ssh",
- "wezterm-term",
  "winapi",
 ]
 
@@ -1483,7 +1483,7 @@ dependencies = [
  "share-data",
  "spawn-funcs",
  "ssh-funcs",
- "termwiz",
+ "tattoy-termwiz",
  "termwiz-funcs",
  "time-funcs",
  "url-funcs",
@@ -3422,15 +3422,15 @@ dependencies = [
  "serial2",
  "shell-words",
  "smol",
+ "tattoy-termwiz",
+ "tattoy-wezterm-term",
  "terminfo",
- "termwiz",
  "termwiz-funcs",
  "textwrap",
  "thiserror 1.0.69",
  "url",
  "wezterm-dynamic",
  "wezterm-ssh",
- "wezterm-term",
  "winapi",
 ]
 
@@ -3447,11 +3447,11 @@ dependencies = [
  "parking_lot",
  "portable-pty",
  "smol",
- "termwiz",
+ "tattoy-termwiz",
+ "tattoy-wezterm-term",
  "termwiz-funcs",
  "url-funcs",
  "wezterm-dynamic",
- "wezterm-term",
 ]
 
 [[package]]
@@ -5393,7 +5393,7 @@ name = "strip-ansi-escapes"
 version = "0.1.0"
 dependencies = [
  "clap",
- "termwiz",
+ "tattoy-termwiz",
 ]
 
 [[package]]
@@ -5541,7 +5541,7 @@ dependencies = [
 name = "tabout"
 version = "0.3.0"
 dependencies = [
- "termwiz",
+ "tattoy-termwiz",
 ]
 
 [[package]]
@@ -5560,6 +5560,86 @@ name = "target-lexicon"
 version = "0.12.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "61c41af27dd6d1e27b1b16b489db798443478cef1f06a660c96db617ba5de3b1"
+
+[[package]]
+name = "tattoy-termwiz"
+version = "0.24.0-fork"
+dependencies = [
+ "anyhow",
+ "bitflags 2.9.1",
+ "cassowary",
+ "criterion",
+ "env_logger 0.11.8",
+ "fancy-regex",
+ "filedescriptor",
+ "finl_unicode",
+ "fixedbitset",
+ "fnv",
+ "image",
+ "k9",
+ "libc",
+ "log",
+ "memmem",
+ "nix",
+ "num-derive",
+ "num-traits",
+ "ordered-float 4.6.0",
+ "pest",
+ "pest_derive",
+ "phf",
+ "serde",
+ "sha2",
+ "signal-hook",
+ "siphasher",
+ "terminfo",
+ "termios",
+ "thiserror 1.0.69",
+ "ucd-trie",
+ "unicode-segmentation",
+ "vtparse",
+ "wezterm-bidi",
+ "wezterm-blob-leases",
+ "wezterm-cell",
+ "wezterm-char-props",
+ "wezterm-color-types",
+ "wezterm-dynamic",
+ "wezterm-escape-parser",
+ "wezterm-input-types",
+ "wezterm-surface",
+ "winapi",
+]
+
+[[package]]
+name = "tattoy-wezterm-term"
+version = "0.1.0-fork.2"
+dependencies = [
+ "anyhow",
+ "bitflags 1.3.2",
+ "csscolorparser",
+ "downcast-rs",
+ "env_logger 0.11.8",
+ "finl_unicode",
+ "hex",
+ "humansize",
+ "image",
+ "k9",
+ "lazy_static",
+ "log",
+ "lru",
+ "miniz_oxide 0.7.4",
+ "num-traits",
+ "ordered-float 4.6.0",
+ "serde",
+ "tattoy-termwiz",
+ "terminfo",
+ "unicode-normalization",
+ "url",
+ "wezterm-bidi",
+ "wezterm-cell",
+ "wezterm-dynamic",
+ "wezterm-escape-parser",
+ "wezterm-surface",
+]
 
 [[package]]
 name = "tempfile"
@@ -5621,54 +5701,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8f50febec83f5ee1df3015341d8bd429f2d1cc62bcba7ea2076759d315084683"
 
 [[package]]
-name = "termwiz"
-version = "0.24.0"
-dependencies = [
- "anyhow",
- "bitflags 2.9.1",
- "cassowary",
- "criterion",
- "env_logger 0.11.8",
- "fancy-regex",
- "filedescriptor",
- "finl_unicode",
- "fixedbitset",
- "fnv",
- "image",
- "k9",
- "libc",
- "log",
- "memmem",
- "nix",
- "num-derive",
- "num-traits",
- "ordered-float 4.6.0",
- "pest",
- "pest_derive",
- "phf",
- "serde",
- "sha2",
- "signal-hook",
- "siphasher",
- "terminfo",
- "termios",
- "thiserror 1.0.69",
- "ucd-trie",
- "unicode-segmentation",
- "vtparse",
- "wezterm-bidi",
- "wezterm-blob-leases",
- "wezterm-cell",
- "wezterm-char-props",
- "wezterm-color-types",
- "wezterm-dynamic",
- "wezterm-escape-parser",
- "wezterm-input-types",
- "wezterm-surface",
- "winapi",
-]
-
-[[package]]
 name = "termwiz-funcs"
 version = "0.1.0"
 dependencies = [
@@ -5677,8 +5709,8 @@ dependencies = [
  "finl_unicode",
  "lazy_static",
  "luahelper",
+ "tattoy-termwiz",
  "terminfo",
- "termwiz",
  "wezterm-dynamic",
  "wezterm-input-types",
 ]
@@ -6534,16 +6566,16 @@ dependencies = [
  "shell-words",
  "smol",
  "tabout",
+ "tattoy-termwiz",
+ "tattoy-wezterm-term",
  "tempfile",
  "termios",
- "termwiz",
  "termwiz-funcs",
  "textwrap",
  "umask",
  "url",
  "wezterm-client",
  "wezterm-gui-subcommands",
- "wezterm-term",
  "winapi",
 ]
 
@@ -6623,14 +6655,14 @@ dependencies = [
  "rangeset",
  "ratelim",
  "smol",
- "termwiz",
+ "tattoy-termwiz",
+ "tattoy-wezterm-term",
  "textwrap",
  "thiserror 1.0.69",
  "umask",
  "url",
  "wezterm-dynamic",
  "wezterm-ssh",
- "wezterm-term",
  "wezterm-uds",
  "winapi",
 ]
@@ -6734,13 +6766,13 @@ dependencies = [
  "objc",
  "ordered-float 4.6.0",
  "rangeset",
- "termwiz",
+ "tattoy-termwiz",
+ "tattoy-wezterm-term",
  "thiserror 1.0.69",
  "walkdir",
  "wezterm-bidi",
  "wezterm-color-types",
  "wezterm-input-types",
- "wezterm-term",
  "wezterm-toast-notification",
  "winapi",
 ]
@@ -6800,9 +6832,10 @@ dependencies = [
  "shlex",
  "smol",
  "tabout",
+ "tattoy-termwiz",
+ "tattoy-wezterm-term",
  "tempfile",
  "terminfo",
- "termwiz",
  "termwiz-funcs",
  "textwrap",
  "thiserror 1.0.69",
@@ -6822,7 +6855,6 @@ dependencies = [
  "wezterm-mux-server-impl",
  "wezterm-open-url",
  "wezterm-ssh",
- "wezterm-term",
  "wezterm-toast-notification",
  "wgpu",
  "winapi",
@@ -6868,11 +6900,11 @@ dependencies = [
  "openssl",
  "portable-pty",
  "promise",
+ "tattoy-wezterm-term",
  "umask",
  "wezterm-blob-leases",
  "wezterm-gui-subcommands",
  "wezterm-mux-server-impl",
- "wezterm-term",
  "winapi",
 ]
 
@@ -6897,10 +6929,10 @@ dependencies = [
  "rangeset",
  "rcgen",
  "smol",
- "termwiz",
+ "tattoy-termwiz",
+ "tattoy-wezterm-term",
  "url",
  "wezterm-client",
- "wezterm-term",
  "wezterm-uds",
  "winapi",
 ]
@@ -6943,7 +6975,7 @@ dependencies = [
  "smol",
  "socket2",
  "ssh2",
- "termwiz",
+ "tattoy-termwiz",
  "thiserror 1.0.69",
  "wezterm-uds",
  "whoami",
@@ -6970,38 +7002,6 @@ dependencies = [
  "wezterm-dynamic",
  "wezterm-escape-parser",
  "wezterm-input-types",
-]
-
-[[package]]
-name = "wezterm-term"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "bitflags 1.3.2",
- "csscolorparser",
- "downcast-rs",
- "env_logger 0.11.8",
- "finl_unicode",
- "hex",
- "humansize",
- "image",
- "k9",
- "lazy_static",
- "log",
- "lru",
- "miniz_oxide 0.7.4",
- "num-traits",
- "ordered-float 4.6.0",
- "serde",
- "terminfo",
- "termwiz",
- "unicode-normalization",
- "url",
- "wezterm-bidi",
- "wezterm-cell",
- "wezterm-dynamic",
- "wezterm-escape-parser",
- "wezterm-surface",
 ]
 
 [[package]]
