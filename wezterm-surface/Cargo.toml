@@ -1,7 +1,7 @@
 [package]
 authors = ["Wez Furlong"]
-name = "wezterm-surface"
-version = "0.1.0"
+name = "tattoy-wezterm-surface"
+version = "0.1.0-fork"
 edition = "2018"
 repository = "https://github.com/wezterm/wezterm"
 description = "Surface and Line types for terminals"
@@ -28,7 +28,7 @@ wezterm-escape-parser = {workspace = true}
 wezterm-input-types.workspace = true
 
 [features]
-default = []
+default = ["std"]
 std = ["fancy-regex/std", "wezterm-cell/std", "wezterm-dynamic/std", "wezterm-escape-parser/std", "fixedbitset/std", "fancy-regex/perf", "fancy-regex/unicode"]
 appdata = ["std"]
 use_serde = ["serde"] #, "wezterm-color-types/use_serde", "wezterm-blob-leases/serde", "bitflags/serde", "wezterm-input-types/serde", "wezterm-escape-parser/use_serde", "wezterm-cell/use_serde"]

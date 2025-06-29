@@ -242,21 +242,21 @@ wayland-protocols = "0.32"
 wayland-protocols-plasma = { version="0.3.6", features=["client"] }
 wezterm-bidi = { version="0.2.3", path = "bidi", default-features=false}
 wezterm-blob-leases = { version="0.1.1", path = "wezterm-blob-leases"}
-wezterm-cell = { path = "wezterm-cell"}
-wezterm-char-props = { path = "wezterm-char-props", default-features=false }
+wezterm-cell = { path = "wezterm-cell", version = "0.1.0-1", package = "tattoy-wezterm-cell" }
+wezterm-char-props = { path = "wezterm-char-props", version = "0.1.3" , package = "tattoy-wezterm-char-props", default-features=false }
 wezterm-client = { path = "wezterm-client" }
-wezterm-color-types = { version="0.3", path = "color-types", default-features=false }
+wezterm-color-types = { version="0.3", path = "color-types", package = "tattoy-wezterm-color-types", default-features=false }
 wezterm-config-derive = { version="0.1", path="config/derive" }
-wezterm-dynamic = { version = "0.2.1", path = "wezterm-dynamic", default-features=false }
+wezterm-dynamic = { version = "0.2.1", path = "wezterm-dynamic", package = "tattoy-wezterm-dynamic", default-features=false }
 wezterm-dynamic-derive = { version="0.1.1", path="wezterm-dynamic/derive" }
-wezterm-escape-parser = { version="0.1.0", path="wezterm-escape-parser" }
+wezterm-escape-parser = { version="=0.1.0-1", path="wezterm-escape-parser", package = "tattoy-wezterm-escape-parser" }
 wezterm-font = { path = "wezterm-font" }
 wezterm-gui-subcommands = { path = "wezterm-gui-subcommands" }
-wezterm-input-types = { version="0.1", path = "wezterm-input-types", default-features=false }
+wezterm-input-types = { version="0.1", path = "wezterm-input-types", package = "tattoy-wezterm-input-types", default-features=false }
 wezterm-mux-server-impl = { path = "wezterm-mux-server-impl" }
 wezterm-open-url = { path = "wezterm-open-url" }
 wezterm-ssh = { path = "wezterm-ssh" }
-wezterm-surface = { path = "wezterm-surface" }
+wezterm-surface = { path = "wezterm-surface", version = "0.1.0-fork", package = "tattoy-wezterm-surface" }
 wezterm-term = { path = "term", package = "tattoy-wezterm-term" }
 wezterm-toast-notification = { path = "wezterm-toast-notification" }
 wezterm-uds = { path = "wezterm-uds" }

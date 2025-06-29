@@ -1,5 +1,5 @@
 [package]
-name = "wezterm-dynamic"
+name = "tattoy-wezterm-dynamic"
 version = "0.2.1"
 edition = "2021"
 repository = "https://github.com/wezterm/wezterm"

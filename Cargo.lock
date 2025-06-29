@@ -457,7 +457,7 @@ dependencies = [
  "config",
  "luahelper",
  "starship-battery",
- "wezterm-dynamic",
+ "tattoy-wezterm-dynamic",
 ]
 
 [[package]]
@@ -878,9 +878,9 @@ dependencies = [
  "serde",
  "serde_json",
  "serde_yaml",
+ "tattoy-wezterm-color-types",
+ "tattoy-wezterm-dynamic",
  "tattoy-wezterm-term",
- "wezterm-color-types",
- "wezterm-dynamic",
 ]
 
 [[package]]
@@ -949,13 +949,13 @@ dependencies = [
  "shlex",
  "smol",
  "tattoy-termwiz",
+ "tattoy-wezterm-dynamic",
+ "tattoy-wezterm-input-types",
  "tattoy-wezterm-term",
  "toml 0.8.22",
  "umask",
  "wezterm-bidi",
  "wezterm-config-derive",
- "wezterm-dynamic",
- "wezterm-input-types",
  "wezterm-ssh",
  "winapi",
 ]
@@ -1685,6 +1685,12 @@ dependencies = [
  "libredox",
  "windows-sys 0.59.0",
 ]
+
+[[package]]
+name = "finl_unicode"
+version = "1.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "94c970b525906eb37d3940083aa65b95e481fc1857d467d13374e1d925cfc163"
 
 [[package]]
 name = "finl_unicode"
@@ -3174,7 +3180,7 @@ dependencies = [
  "bstr",
  "log",
  "mlua",
- "wezterm-dynamic",
+ "tattoy-wezterm-dynamic",
 ]
 
 [[package]]
@@ -3400,7 +3406,7 @@ dependencies = [
  "downcast-rs",
  "fancy-regex",
  "filedescriptor",
- "finl_unicode",
+ "finl_unicode 1.3.0 (git+https://github.com/wez/finl_unicode.git?branch=no_std)",
  "hostname",
  "k9",
  "lazy_static",
@@ -3423,13 +3429,13 @@ dependencies = [
  "shell-words",
  "smol",
  "tattoy-termwiz",
+ "tattoy-wezterm-dynamic",
  "tattoy-wezterm-term",
  "terminfo",
  "termwiz-funcs",
  "textwrap",
  "thiserror 1.0.69",
  "url",
- "wezterm-dynamic",
  "wezterm-ssh",
  "winapi",
 ]
@@ -3448,10 +3454,10 @@ dependencies = [
  "portable-pty",
  "smol",
  "tattoy-termwiz",
+ "tattoy-wezterm-dynamic",
  "tattoy-wezterm-term",
  "termwiz-funcs",
  "url-funcs",
- "wezterm-dynamic",
 ]
 
 [[package]]
@@ -4157,8 +4163,8 @@ dependencies = [
  "git2",
  "log",
  "luahelper",
+ "tattoy-wezterm-dynamic",
  "tempfile",
- "wezterm-dynamic",
 ]
 
 [[package]]
@@ -4312,7 +4318,7 @@ dependencies = [
  "log",
  "luahelper",
  "ntapi",
- "wezterm-dynamic",
+ "tattoy-wezterm-dynamic",
  "winapi",
 ]
 
@@ -4325,7 +4331,7 @@ dependencies = [
  "libc",
  "luahelper",
  "procinfo",
- "wezterm-dynamic",
+ "tattoy-wezterm-dynamic",
 ]
 
 [[package]]
@@ -4979,8 +4985,8 @@ dependencies = [
  "luahelper",
  "serde_json",
  "serde_yaml",
+ "tattoy-wezterm-dynamic",
  "toml 0.8.22",
- "wezterm-dynamic",
 ]
 
 [[package]]
@@ -5131,7 +5137,7 @@ dependencies = [
  "lazy_static",
  "luahelper",
  "ordered-float 4.6.0",
- "wezterm-dynamic",
+ "tattoy-wezterm-dynamic",
 ]
 
 [[package]]
@@ -5295,7 +5301,7 @@ dependencies = [
  "log",
  "luahelper",
  "smol",
- "wezterm-dynamic",
+ "tattoy-wezterm-dynamic",
  "wezterm-open-url",
  "winapi",
 ]
@@ -5477,10 +5483,10 @@ dependencies = [
  "serde_yaml",
  "sqlite-cache",
  "tar",
+ "tattoy-wezterm-dynamic",
  "tempfile",
  "tokio",
  "toml 0.8.22",
- "wezterm-dynamic",
 ]
 
 [[package]]
@@ -5572,7 +5578,7 @@ dependencies = [
  "env_logger 0.11.8",
  "fancy-regex",
  "filedescriptor",
- "finl_unicode",
+ "finl_unicode 1.3.0 (git+https://github.com/wez/finl_unicode.git?branch=no_std)",
  "fixedbitset",
  "fnv",
  "image",
@@ -5591,6 +5597,13 @@ dependencies = [
  "sha2",
  "signal-hook",
  "siphasher",
+ "tattoy-wezterm-cell",
+ "tattoy-wezterm-char-props",
+ "tattoy-wezterm-color-types",
+ "tattoy-wezterm-dynamic",
+ "tattoy-wezterm-escape-parser",
+ "tattoy-wezterm-input-types",
+ "tattoy-wezterm-surface",
  "terminfo",
  "termios",
  "thiserror 1.0.69",
@@ -5599,26 +5612,132 @@ dependencies = [
  "vtparse",
  "wezterm-bidi",
  "wezterm-blob-leases",
- "wezterm-cell",
- "wezterm-char-props",
- "wezterm-color-types",
- "wezterm-dynamic",
- "wezterm-escape-parser",
- "wezterm-input-types",
- "wezterm-surface",
  "winapi",
 ]
 
 [[package]]
+name = "tattoy-wezterm-cell"
+version = "0.1.0-1"
+dependencies = [
+ "finl_unicode 1.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "image",
+ "log",
+ "ordered-float 4.6.0",
+ "serde",
+ "sha2",
+ "tattoy-wezterm-char-props",
+ "tattoy-wezterm-color-types",
+ "tattoy-wezterm-dynamic",
+ "tattoy-wezterm-escape-parser",
+ "thiserror 1.0.69",
+ "wezterm-blob-leases",
+]
+
+[[package]]
+name = "tattoy-wezterm-char-props"
+version = "0.1.3"
+dependencies = [
+ "k9",
+ "phf",
+ "serde",
+ "ucd-trie",
+]
+
+[[package]]
+name = "tattoy-wezterm-color-types"
+version = "0.3.0"
+dependencies = [
+ "csscolorparser",
+ "deltae",
+ "num-traits",
+ "serde",
+ "tattoy-wezterm-dynamic",
+]
+
+[[package]]
+name = "tattoy-wezterm-dynamic"
+version = "0.2.1"
+dependencies = [
+ "log",
+ "maplit",
+ "ordered-float 4.6.0",
+ "strsim",
+ "thiserror 2.0.12",
+ "wezterm-dynamic-derive",
+]
+
+[[package]]
+name = "tattoy-wezterm-escape-parser"
+version = "0.1.0-1"
+dependencies = [
+ "base64 0.22.1",
+ "bitflags 2.9.1",
+ "criterion",
+ "env_logger 0.11.8",
+ "hex",
+ "image",
+ "k9",
+ "log",
+ "nix",
+ "num-derive",
+ "num-traits",
+ "ordered-float 4.6.0",
+ "pest",
+ "pest_derive",
+ "serde",
+ "sha2",
+ "tattoy-wezterm-color-types",
+ "tattoy-wezterm-dynamic",
+ "tattoy-wezterm-input-types",
+ "thiserror 2.0.12",
+ "vtparse",
+ "wezterm-blob-leases",
+ "winapi",
+]
+
+[[package]]
+name = "tattoy-wezterm-input-types"
+version = "0.1.0"
+dependencies = [
+ "bitflags 1.3.2",
+ "euclid",
+ "serde",
+ "tattoy-wezterm-dynamic",
+]
+
+[[package]]
+name = "tattoy-wezterm-surface"
+version = "0.1.0-fork"
+dependencies = [
+ "bitflags 2.9.1",
+ "fancy-regex",
+ "finl_unicode 1.3.0 (git+https://github.com/wez/finl_unicode.git?branch=no_std)",
+ "fixedbitset",
+ "k9",
+ "ordered-float 4.6.0",
+ "serde",
+ "siphasher",
+ "tattoy-wezterm-cell",
+ "tattoy-wezterm-char-props",
+ "tattoy-wezterm-color-types",
+ "tattoy-wezterm-dynamic",
+ "tattoy-wezterm-escape-parser",
+ "tattoy-wezterm-input-types",
+ "unicode-segmentation",
+ "wezterm-bidi",
+ "wezterm-blob-leases",
+]
+
+[[package]]
 name = "tattoy-wezterm-term"
-version = "0.1.0-fork.2"
+version = "0.1.0-fork.3"
 dependencies = [
  "anyhow",
  "bitflags 1.3.2",
  "csscolorparser",
  "downcast-rs",
  "env_logger 0.11.8",
- "finl_unicode",
+ "finl_unicode 1.3.0 (git+https://github.com/wez/finl_unicode.git?branch=no_std)",
  "hex",
  "humansize",
  "image",
@@ -5631,14 +5750,14 @@ dependencies = [
  "ordered-float 4.6.0",
  "serde",
  "tattoy-termwiz",
+ "tattoy-wezterm-cell",
+ "tattoy-wezterm-dynamic",
+ "tattoy-wezterm-escape-parser",
+ "tattoy-wezterm-surface",
  "terminfo",
  "unicode-normalization",
  "url",
  "wezterm-bidi",
- "wezterm-cell",
- "wezterm-dynamic",
- "wezterm-escape-parser",
- "wezterm-surface",
 ]
 
 [[package]]
@@ -5706,13 +5825,13 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "config",
- "finl_unicode",
+ "finl_unicode 1.3.0 (git+https://github.com/wez/finl_unicode.git?branch=no_std)",
  "lazy_static",
  "luahelper",
  "tattoy-termwiz",
+ "tattoy-wezterm-dynamic",
+ "tattoy-wezterm-input-types",
  "terminfo",
- "wezterm-dynamic",
- "wezterm-input-types",
 ]
 
 [[package]]
@@ -5816,7 +5935,7 @@ dependencies = [
  "promise",
  "smol",
  "spa",
- "wezterm-dynamic",
+ "tattoy-wezterm-dynamic",
 ]
 
 [[package]]
@@ -6193,8 +6312,8 @@ dependencies = [
  "config",
  "luahelper",
  "percent-encoding",
+ "tattoy-wezterm-dynamic",
  "url",
- "wezterm-dynamic",
 ]
 
 [[package]]
@@ -6586,7 +6705,7 @@ dependencies = [
  "env_logger 0.11.8",
  "k9",
  "log",
- "wezterm-dynamic",
+ "tattoy-wezterm-dynamic",
 ]
 
 [[package]]
@@ -6600,34 +6719,6 @@ dependencies = [
  "tempfile",
  "thiserror 1.0.69",
  "uuid",
-]
-
-[[package]]
-name = "wezterm-cell"
-version = "0.1.0"
-dependencies = [
- "finl_unicode",
- "image",
- "log",
- "ordered-float 4.6.0",
- "serde",
- "sha2",
- "thiserror 1.0.69",
- "wezterm-blob-leases",
- "wezterm-char-props",
- "wezterm-color-types",
- "wezterm-dynamic",
- "wezterm-escape-parser",
-]
-
-[[package]]
-name = "wezterm-char-props"
-version = "0.1.3"
-dependencies = [
- "k9",
- "phf",
- "serde",
- "ucd-trie",
 ]
 
 [[package]]
@@ -6656,26 +6747,15 @@ dependencies = [
  "ratelim",
  "smol",
  "tattoy-termwiz",
+ "tattoy-wezterm-dynamic",
  "tattoy-wezterm-term",
  "textwrap",
  "thiserror 1.0.69",
  "umask",
  "url",
- "wezterm-dynamic",
  "wezterm-ssh",
  "wezterm-uds",
  "winapi",
-]
-
-[[package]]
-name = "wezterm-color-types"
-version = "0.3.0"
-dependencies = [
- "csscolorparser",
- "deltae",
- "num-traits",
- "serde",
- "wezterm-dynamic",
 ]
 
 [[package]]
@@ -6688,53 +6768,12 @@ dependencies = [
 ]
 
 [[package]]
-name = "wezterm-dynamic"
-version = "0.2.1"
-dependencies = [
- "log",
- "maplit",
- "ordered-float 4.6.0",
- "strsim",
- "thiserror 2.0.12",
- "wezterm-dynamic-derive",
-]
-
-[[package]]
 name = "wezterm-dynamic-derive"
 version = "0.1.1"
 dependencies = [
  "proc-macro2",
  "quote",
  "syn 1.0.109",
-]
-
-[[package]]
-name = "wezterm-escape-parser"
-version = "0.1.0"
-dependencies = [
- "base64 0.22.1",
- "bitflags 2.9.1",
- "criterion",
- "env_logger 0.11.8",
- "hex",
- "image",
- "k9",
- "log",
- "nix",
- "num-derive",
- "num-traits",
- "ordered-float 4.6.0",
- "pest",
- "pest_derive",
- "serde",
- "sha2",
- "thiserror 2.0.12",
- "vtparse",
- "wezterm-blob-leases",
- "wezterm-color-types",
- "wezterm-dynamic",
- "wezterm-input-types",
- "winapi",
 ]
 
 [[package]]
@@ -6752,7 +6791,7 @@ dependencies = [
  "enum-display-derive",
  "env_logger 0.11.8",
  "euclid",
- "finl_unicode",
+ "finl_unicode 1.3.0 (git+https://github.com/wez/finl_unicode.git?branch=no_std)",
  "fontconfig",
  "freetype",
  "harfbuzz",
@@ -6767,12 +6806,12 @@ dependencies = [
  "ordered-float 4.6.0",
  "rangeset",
  "tattoy-termwiz",
+ "tattoy-wezterm-color-types",
+ "tattoy-wezterm-input-types",
  "tattoy-wezterm-term",
  "thiserror 1.0.69",
  "walkdir",
  "wezterm-bidi",
- "wezterm-color-types",
- "wezterm-input-types",
  "wezterm-toast-notification",
  "winapi",
 ]
@@ -6801,7 +6840,7 @@ dependencies = [
  "euclid",
  "fastrand",
  "filedescriptor",
- "finl_unicode",
+ "finl_unicode 1.3.0 (git+https://github.com/wez/finl_unicode.git?branch=no_std)",
  "frecency",
  "futures",
  "hdrhistogram",
@@ -6833,6 +6872,7 @@ dependencies = [
  "smol",
  "tabout",
  "tattoy-termwiz",
+ "tattoy-wezterm-dynamic",
  "tattoy-wezterm-term",
  "tempfile",
  "terminfo",
@@ -6849,7 +6889,6 @@ dependencies = [
  "wezterm-bidi",
  "wezterm-blob-leases",
  "wezterm-client",
- "wezterm-dynamic",
  "wezterm-font",
  "wezterm-gui-subcommands",
  "wezterm-mux-server-impl",
@@ -6870,16 +6909,6 @@ dependencies = [
  "anyhow",
  "clap",
  "config",
-]
-
-[[package]]
-name = "wezterm-input-types"
-version = "0.1.0"
-dependencies = [
- "bitflags 1.3.2",
- "euclid",
- "serde",
- "wezterm-dynamic",
 ]
 
 [[package]]
@@ -6979,29 +7008,6 @@ dependencies = [
  "thiserror 1.0.69",
  "wezterm-uds",
  "whoami",
-]
-
-[[package]]
-name = "wezterm-surface"
-version = "0.1.0"
-dependencies = [
- "bitflags 2.9.1",
- "fancy-regex",
- "finl_unicode",
- "fixedbitset",
- "k9",
- "ordered-float 4.6.0",
- "serde",
- "siphasher",
- "unicode-segmentation",
- "wezterm-bidi",
- "wezterm-blob-leases",
- "wezterm-cell",
- "wezterm-char-props",
- "wezterm-color-types",
- "wezterm-dynamic",
- "wezterm-escape-parser",
- "wezterm-input-types",
 ]
 
 [[package]]
@@ -7246,6 +7252,8 @@ dependencies = [
  "shared_library",
  "shlex",
  "smithay-client-toolkit",
+ "tattoy-wezterm-color-types",
+ "tattoy-wezterm-input-types",
  "thiserror 1.0.69",
  "tiny-skia",
  "url",
@@ -7255,9 +7263,7 @@ dependencies = [
  "wayland-protocols",
  "wayland-protocols-plasma",
  "wezterm-bidi",
- "wezterm-color-types",
  "wezterm-font",
- "wezterm-input-types",
  "winapi",
  "windows 0.33.0",
  "winreg",
@@ -7276,7 +7282,7 @@ dependencies = [
  "anyhow",
  "config",
  "luahelper",
- "wezterm-dynamic",
+ "tattoy-wezterm-dynamic",
  "window",
 ]
 
