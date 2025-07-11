@@ -1,7 +1,7 @@
 [package]
 authors = ["Wez Furlong", "Tom BH <tattoy@tombh.co.uk>"]
 name = "tattoy-termwiz"
-version = "0.24.0-fork"
+version = "0.24.0-fork.2"
 edition = "2018"
 repository = "https://github.com/tattoy-org/wezterm"
 description = "Tattoy fork of Wezterm's Terminal Wizardry for Unix and Windows"

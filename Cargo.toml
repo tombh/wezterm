@@ -256,7 +256,7 @@ wezterm-input-types = { version="0.1", path = "wezterm-input-types", package = "
 wezterm-mux-server-impl = { path = "wezterm-mux-server-impl" }
 wezterm-open-url = { path = "wezterm-open-url" }
 wezterm-ssh = { path = "wezterm-ssh" }
-wezterm-surface = { path = "wezterm-surface", version = "0.1.0-fork", package = "tattoy-wezterm-surface" }
+wezterm-surface = { path = "wezterm-surface", version = "0.1.0-fork.1", package = "tattoy-wezterm-surface" }
 wezterm-term = { path = "term", package = "tattoy-wezterm-term" }
 wezterm-toast-notification = { path = "wezterm-toast-notification" }
 wezterm-uds = { path = "wezterm-uds" }
