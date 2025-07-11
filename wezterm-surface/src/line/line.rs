@@ -1044,7 +1044,7 @@ impl Line {
         CellCluster::make_cluster(self.len(), self.visible_cells(), bidi_hint)
     }
 
-    fn make_cells(&mut self) {
+    pub fn make_cells(&mut self) {
         let cells = match &self.cells {
             CellStorage::V(_) => return,
             CellStorage::C(cl) => cl.to_cell_vec(),
@@ -1076,6 +1076,13 @@ impl Line {
 
     pub fn cells_mut(&mut self) -> &mut [Cell] {
         self.coerce_vec_storage().as_mut_slice()
+    }
+
+    pub fn cells(&self) -> &[Cell] {
+        match &self.cells {
+            CellStorage::V(c) => return c.as_slice(),
+            CellStorage::C(_) => unreachable!(),
+        }
     }
 
     /// Return true if the line consists solely of whitespace cells

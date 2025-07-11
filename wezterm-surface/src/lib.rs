@@ -531,6 +531,20 @@ impl Surface {
         lines
     }
 
+    pub fn make_screen_cells(&mut self) {
+        for line in &mut self.lines {
+            line.make_cells();
+        }
+    }
+
+    pub fn get_screen_cells(&self) -> Vec<&[Cell]> {
+        let mut lines = Vec::new();
+        for line in &self.lines {
+            lines.push(line.cells());
+        }
+        lines
+    }
+
     pub fn screen_lines(&self) -> Vec<Cow<Line>> {
         self.lines.iter().map(|line| Cow::Borrowed(line)).collect()
     }
