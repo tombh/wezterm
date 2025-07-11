@@ -15,6 +15,7 @@ fancy-regex.workspace = true
 finl_unicode.workspace = true
 fixedbitset.workspace = true
 ordered-float.workspace = true
+schemars = "1.0.3"
 serde = {workspace=true, optional=true}
 siphasher.workspace = true
 unicode-segmentation.workspace = true

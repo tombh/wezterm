@@ -44,7 +44,10 @@ pub enum Position {
     EndRelative(usize),
 }
 
-#[cfg_attr(feature = "use_serde", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "use_serde",
+    derive(Serialize, Deserialize, schemars::JsonSchema)
+)]
 #[derive(Debug, Clone, Hash, Copy, PartialEq, Eq, FromDynamic, ToDynamic)]
 pub enum CursorVisibility {
     Hidden,
@@ -57,7 +60,10 @@ impl Default for CursorVisibility {
     }
 }
 
-#[cfg_attr(feature = "use_serde", derive(Serialize, Deserialize))]
+#[cfg_attr(
+    feature = "use_serde",
+    derive(Serialize, Deserialize, schemars::JsonSchema)
+)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, FromDynamic, ToDynamic)]
 pub enum CursorShape {
     Default,
